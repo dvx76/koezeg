@@ -51,6 +51,6 @@ MODES = {
         "flag": "y",
         "eyes": "..",
         "tongue": "  ",
-        "help": "Youthfull mode (tiny eyes)",
+        "help": "Youthful mode (tiny eyes)",
     },
 }
