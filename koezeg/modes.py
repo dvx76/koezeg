@@ -53,4 +53,10 @@ MODES = {
         "tongue": "  ",
         "help": "Youthfull mode (tiny eyes)",
     },
+    "paranoid": {
+        "flag": "p",
+        "eyes": "@@",
+        "tongue": "  ",
+        "help": "Paranoid mode",
+    }
 }
