@@ -1,9 +1,10 @@
 """The command line interface: reads the options and prints the cow."""
 
 import argparse
+import sys
 
 from koezeg.bubble import make_bubble
-from koezeg.cowfile import DEFAULT_COW, random_cow, render_cow
+from koezeg.cowfile import DEFAULT_COW, list_cows, random_cow, render_cow
 from koezeg.modes import DEFAULT_MODE, MODES
 
 # What the cow says when you give it nothing to say.
@@ -35,6 +36,12 @@ def build_parser():
         action="store_true",
         help="use a random cow",
     )
+    parser.add_argument(
+        "-l",
+        dest="list_cows",
+        action="store_true",
+        help="list available cows",
+    )
 
     # One option for every mode in modes.py: -b, -d, -g, ...
     for mode_name, mode in MODES.items():
@@ -52,6 +59,10 @@ def build_parser():
 def main():
     """Run koezeg."""
     args = build_parser().parse_args()
+
+    if args.list_cows:
+        print("\n".join(list_cows()))
+        sys.exit(0)
 
     if len(args.message) > 0:
         message = args.message[0]
