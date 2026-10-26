@@ -29,7 +29,7 @@ def list_cows():
 def random_cow():
     """Return the name of a random cow."""
     names = list_cows()
-    index = random.randint(0, len(names))
+    index = random.randint(0, len(names) - 1)
     return names[index]
 
 
