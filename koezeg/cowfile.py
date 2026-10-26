@@ -39,7 +39,7 @@ def read_cow(name):
     return path.read_text(encoding="utf-8")
 
 
-def render_cow(name, eyes, tongue, tail="\\"):
+def render_cow(name, eyes, tongue, tail):
     """Return the cow as text, with the placeholders filled in."""
     art = read_cow(name)
     art = art.replace("$thoughts", tail)

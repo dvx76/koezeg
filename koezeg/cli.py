@@ -66,5 +66,5 @@ def main():
     # args.mode is None when no mode flag was given.
     mode = MODES.get(args.mode, DEFAULT_MODE)
 
-    print(make_bubble(message))
-    print(render_cow(cow, mode["eyes"], mode["tongue"]))
+    print(make_bubble(message, mode=mode["bubble"]))
+    print(render_cow(cow, mode["eyes"], mode["tongue"], mode["thoughts"]))

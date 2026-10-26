@@ -15,7 +15,7 @@ def wrap_text(text, width=DEFAULT_WIDTH):
     return lines
 
 
-def make_bubble(text, width=DEFAULT_WIDTH):
+def make_bubble(text, width=DEFAULT_WIDTH, mode="say"):
     """Return the speech bubble for `text` as one string (with newlines)."""
     lines = wrap_text(text, width)
 
@@ -33,7 +33,10 @@ def make_bubble(text, width=DEFAULT_WIDTH):
 
     if len(lines) == 1:
         # One line: < text >
-        result.append("< " + lines[0].ljust(longest) + " >")
+        if mode=="think":
+            result.append("( " + lines[0].ljust(longest) + " )")    
+        else:                  
+            result.append("< " + lines[0].ljust(longest) + " >")
     else:
         # More lines: the first and last line get special corners.
         # ljust() adds spaces on the right so every line is equally long.
