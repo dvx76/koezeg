@@ -1,6 +1,8 @@
 """The command line interface: reads the options and prints the cow."""
-
+import sys
+from koezeg.cowfile import list_cows
 import argparse
+from email import parser
 
 from koezeg.bubble import make_bubble
 from koezeg.cowfile import DEFAULT_COW, random_cow, render_cow
@@ -45,10 +47,22 @@ def build_parser():
             const=mode_name,
             help=mode["help"],
         )
-
+        parser.add_argument(
+            "-l",
+            action="store_true",
+            help="toon alle beschikbare koeien",
+        )
+    
+        args = parser.parse_args()
+    
+        if args.l:
+            for cow in list_cows():
+                print(cow)
+            sys.exit(0)
+    
     return parser
 
-
+     
 def main():
     """Run koezeg."""
     args = build_parser().parse_args()
@@ -68,3 +82,4 @@ def main():
 
     print(make_bubble(message))
     print(render_cow(cow, mode["eyes"], mode["tongue"]))
+
