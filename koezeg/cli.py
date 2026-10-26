@@ -48,6 +48,18 @@ def build_parser():
 
     return parser
 
+    parser.add_argument(
+    "-l",
+    action="store_true",
+    help="toon alle beschikbare koeien",
+)
+
+    args = parser.parse_args()
+
+    if args.l:
+        for cow in list_cows():
+            print(cow)
+        sys.exit(0)
 
 def main():
     """Run koezeg."""
@@ -68,3 +80,4 @@ def main():
 
     print(make_bubble(message))
     print(render_cow(cow, mode["eyes"], mode["tongue"]))
+
